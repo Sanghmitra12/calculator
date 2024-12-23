@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CALCULATOR</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+        body{
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(45deg, black , rgb(95, 94, 94));
+        }
+        .calculator{
+            border: 2px solid rgb(57, 56, 56);
+            padding: 18px;
+            height: 95%;
+            border-radius: 14px;
+            background-color: transparent;
+            box-shadow: 0px 3px 15px grey;
+        }
+        input{
+            width: 300px;
+            border: none;
+            padding: 24px;
+            margin: 10px;
+            background: transparent;
+            text-align: right;
+            font-size: 30px;
+            cursor: pointer;
+            color: white;
+        }
+        input::placeholder{
+            columns: white;
+        }
+        button{
+            
+            width: 60px;
+            height:50px;
+            margin: 10px;
+            border-radius: 50%;
+            background: transparent;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        .equlabtn{
+            background-color: #fb7c14;
+        }
+        .operator{
+            color: #fb7c14;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" placeholder="0" id="inputbox">
+        <div>
+            <button class="operator">AC</button>
+            <button class="operator">DEL</button>
+            <button class="operator">%</button>
+            <button class="operator">/</button>
+        </div>
+
+        <div>
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button class="operator">*</button>
+        </div>
+
+        <div>
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button class="operator">-</button>
+        </div>
+
+        <div>
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button class="operator">+</button>
+        </div>
+
+        <div>
+            <button>00</button>
+            <button>0</button>
+            <button>.</button>
+            <button class="equlabtn">=</button>
+        </div>
+    </div>
+
+    <script>
+        let input=document.getElementById('inputbox')
+        let buttons= document.querySelectorAll('button')
+
+        let string= ""
+        let arr= Array.from(buttons)
+
+        arr.forEach(button => {
+            button.addEventListener('click' ,(e)=>{
+                if(e.target.innerHTML == '='){
+                    string= eval(string)
+                    input.value= string
+                }
+                else if(e.target.innerHTML== 'AC'){
+                    string=""
+                    input.value=string
+                }
+                else if(e.target.innerHTML== 'DEL'){
+                    string= string.substring(0, string.length - 1)
+                    input.value=string
+                }
+                else{
+                    string+= e.target.innerHTML
+                input.value= string
+                }
+            }) 
+        })
+    </script>
+</body>
+</html>
