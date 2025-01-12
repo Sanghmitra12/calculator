@@ -1,2 +1,2 @@
 # Calculator
-![calculator](calci.png.png)
+<!--![calculator](calci.png.png)-->
